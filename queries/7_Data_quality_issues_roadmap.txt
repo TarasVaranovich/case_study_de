@@ -1,0 +1,26 @@
+Quick recup ragarading data quality check:
+1. Firstly, during migration process I have applied in advance
+ strict constraints to Customer and Order identifiers. 
+2. Queries provided in the scope of the current task catching obvious 
+dummy issues.
+3. To implement another more deep checks I need more informarion about business 
+domain dependencies.
+4. We can extand data with all known countries and using join between DWH
+and countries table receive invalid counstries.
+5. Not sure, does person have to have phone number of country where he/she
+has residence.
+
+How to manage:
+1. For example, for 'Customer' table mini-dimension could be introduced - it 
+will containt information about cause of invalidity.
+2. Tables can be splet into valid and invalid - that case we will get 'Gold'
+during the first iteration what will save time and costs.
+3. More common way is medallion pattern which even could be extanded with 'Platinum'
+layer.
+
+How to fix:
+Am not thinking it can be fixed in the simple way.
+In real prod environment we fixed issues manually with discussions and 
+calrifications.
+In some, more like 'NP-completed' cases, we can train ML models to do that.
+For example, addresses, countries can be fixed in specific circumstances.
